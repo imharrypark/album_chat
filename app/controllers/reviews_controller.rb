@@ -22,6 +22,22 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+
+    if @review.valid?
+      redirect_to @review
+    else
+      flash[:error] = @review.errors.full_messages
+      render "edit"
+    end
+  end
+
   private
 
   def review_params
