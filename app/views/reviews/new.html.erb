@@ -1,1 +1,14 @@
-new
+<%= form_for(@review) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+
+  <%= f.submit %>
+<% end %>
+
+<% flash[:error].each do |n| %>
+  <p><%= n %></p>
+<% end %>
