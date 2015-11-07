@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @comments = @review.comments.order(created_at: :desc )
+    @comments = @review.comments.order('created_at')
   end
 
   def edit
