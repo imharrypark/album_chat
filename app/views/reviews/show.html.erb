@@ -1,8 +1,12 @@
 <h3>Review</h3>
 
-<p><%= link_to 'back', root_path %> | <%= link_to 'edit', edit_review_path(@review) %> | <%= link_to 'delete', review_path(@review), method: :delete, data: {confirm: 'Are you sure?'} %></p>
+<p><%= link_to 'back', root_path %>
+  <% if @review.user == current_user %>
+  | <%= link_to 'edit', edit_review_path(@review) %> | <%= link_to 'delete', review_path(@review), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
+</p>
 
-<p>Title: <%= @review.title %></p>
+<p>Title: <%= @review.title %> - by <em><%= @review.user.name %></em></p>
 <p>Rating: <%= @review.rating %></p>
 <p>Body: <%= @review.body %></p>
 
@@ -10,8 +14,10 @@
 
 <%= render @comments %>
 
-<%= form_for([@review, @review.comments.build]) do |f| %>
-  <%= f.text_field :body %>
+<% if signed_in? %>
+  <%= form_for([@review, @review.comments.build]) do |f| %>
+    <%= f.text_field :body %>
 
-  <%= f.submit "Enter" %>
+    <%= f.submit "Comment" %>
+  <% end %>
 <% end %>
