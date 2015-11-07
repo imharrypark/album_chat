@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "reviews#index"
 
-  get '/signin', to: 'users#new'
+  get '/signup', to: 'users#new'
 
   resources :reviews do
     resources :comments
