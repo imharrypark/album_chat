@@ -27,6 +27,8 @@ gem 'faker'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem "discogs-wrapper"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
