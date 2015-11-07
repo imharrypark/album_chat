@@ -6,6 +6,14 @@ class CommentsController < ApplicationController
     redirect_to review_path(comment.review)
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    review = comment.review
+    comment.destroy
+
+    redirect_to review_path(review)
+  end
+
   private
 
   def comment_params
