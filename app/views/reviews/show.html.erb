@@ -10,8 +10,10 @@
 
 <%= render @comments %>
 
-<%= form_for([@review, @review.comments.build]) do |f| %>
-  <%= f.text_field :body %>
+<% if signed_in? %>
+  <%= form_for([@review, @review.comments.build]) do |f| %>
+    <%= f.text_field :body %>
 
-  <%= f.submit "Enter" %>
+    <%= f.submit "Enter" %>
+  <% end %>
 <% end %>
