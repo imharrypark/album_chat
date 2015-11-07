@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comments = @review.comments.order('created_at')
   end
 
   def edit
@@ -40,6 +41,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
+    review.comments.destroy_all
     review.destroy
 
     redirect_to root_path

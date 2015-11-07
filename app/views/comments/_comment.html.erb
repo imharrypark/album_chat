@@ -1,0 +1,1 @@
+<p><%= comment.body %> - <%= comment.created_at.time %> <%= link_to "delete", review_comment_path(comment.review, comment), method: :delete, data: {confirm: 'Are you sure?'} %></p>

@@ -1,7 +1,17 @@
 <h3>Review</h3>
 
-<p><%= link_to 'edit', edit_review_path(@review) %> | <%= link_to 'delete', review_path(@review), method: :delete, data: {confirm: 'Are you sure?'} %></p>
+<p><%= link_to 'back', root_path %> | <%= link_to 'edit', edit_review_path(@review) %> | <%= link_to 'delete', review_path(@review), method: :delete, data: {confirm: 'Are you sure?'} %></p>
 
 <p>Title: <%= @review.title %></p>
 <p>Rating: <%= @review.rating %></p>
 <p>Body: <%= @review.body %></p>
+
+<p>Comments:</p>
+
+<%= render @comments %>
+
+<%= form_for([@review, @review.comments.build]) do |f| %>
+  <%= f.text_field :body %>
+
+  <%= f.submit "Enter" %>
+<% end %>
