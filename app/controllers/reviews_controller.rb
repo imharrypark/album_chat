@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    bounce_guest
     @review = Review.new
   end
 

@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def signed_in?
     current_user != nil
   end
+
+  def bounce_guest
+    redirect_to signin_path if !signed_in?
+  end
 end
