@@ -5,3 +5,15 @@
 <p>Title: <%= @review.title %></p>
 <p>Rating: <%= @review.rating %></p>
 <p>Body: <%= @review.body %></p>
+
+<p>Comments:</p>
+
+<% @comments.each do |comment| %>
+  <p><%= comment.body %></p>
+<% end %>
+
+<%= form_for([@review, @review.comments.build]) do |f| %>
+  <%= f.text_field :body %>
+
+  <%= f.submit "Enter" %>
+<% end %>
