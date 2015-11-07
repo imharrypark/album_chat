@@ -8,9 +8,7 @@
 
 <p>Comments:</p>
 
-<% @comments.each do |comment| %>
-  <p><%= comment.body %></p>
-<% end %>
+<%= render @comments %>
 
 <%= form_for([@review, @review.comments.build]) do |f| %>
   <%= f.text_field :body %>
