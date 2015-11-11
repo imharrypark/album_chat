@@ -7,6 +7,11 @@ class ApiCaller
     first_result
   end
 
+  def get_albums_by_artist_id(id)
+    apikey = ENV["apikey"]
+    result = HTTParty.get("http://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=#{id}&s_release_date=desc")
+  end
+
   private
 
   def parameterize(str)
