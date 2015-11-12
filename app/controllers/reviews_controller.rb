@@ -5,12 +5,15 @@ class ReviewsController < ApplicationController
 
   def new
     bounce_guest
+    if params[:album_index].to_i + 1 > session[:albums_arr].length
+      flash[:error] = "Please check the index number."
+      redirect_to search_1_path
+    end
     @review = Review.new
   end
 
   def create
     @review = current_user.reviews.new(review_params)
-
     if @review.save
       redirect_to reviews_path
     else
@@ -51,7 +54,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :rating)
+    params.require(:review).permit(:title, :body, :rating, :album_name, :artist_name, :album_release_date)
   end
 
 end
