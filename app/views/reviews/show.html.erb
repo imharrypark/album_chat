@@ -6,8 +6,10 @@
   <% end %>
 </p>
 
+<p>Album: <%= @review.album_name %></p>
+<p>Release date: <%= @review.album_release_date %></p>
 <p>Title: <%= @review.title %> - by <em><%= @review.user.name %></em></p>
-<p>Rating: <%= @review.rating %></p>
+<p>User Rating: <%= @review.rating %></p>
 <p>Body: <%= @review.body %></p>
 
 <p>Comments:</p>

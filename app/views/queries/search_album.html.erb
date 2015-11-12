@@ -1,0 +1,11 @@
+<h3>Choose an album to review</h3>
+
+<%= form_tag("/reviews/new", method: "get") do %>
+  <%= label_tag(:album_index, "Type #") %>
+  <%= text_field_tag(:album_index) %>
+  <%= submit_tag("Start Review!") %>
+<% end %>
+
+<% @albums_arr.each_with_index do |album, i| %>
+  <p><%= i %>: <%= album["name"] %></p>
+<% end %>

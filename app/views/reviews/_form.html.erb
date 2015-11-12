@@ -1,16 +1,17 @@
+<% album = session[:albums_arr][params[:album_index].to_i] %>
 <%= form_for(@review) do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
   <%= f.label :body %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body %><br>
   <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <%= f.text_field :rating %><br>
+
+  <%= f.hidden_field :album_name, value: album["name"] %>
+  <%= f.hidden_field :artist_name, value: album["artist"] %>
+  <%= f.hidden_field :album_release_date, value: album["release_date"] %>
 
   <%= f.submit %>
 <% end %>
 
-<% if flash[:error] %>
-  <% flash[:error].each do |n| %>
-    <p><%= n %></p>
-  <% end %>
-<% end %>
+<%= flash[:error] if flash[:error] %>

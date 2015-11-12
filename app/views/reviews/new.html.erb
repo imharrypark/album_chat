@@ -1,1 +1,7 @@
+<h3>Review</h3>
+<% album = session[:albums_arr][params[:album_index].to_i] %>
+<p>Album name: <%= album["name"] %></p>
+<p>Artist: <%= album["artist"] %>
+<p>Release Date: <%= album["release_date"] %></p>
+
 <%= render 'form' %>

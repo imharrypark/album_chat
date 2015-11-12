@@ -1,0 +1,9 @@
+<h3>Which artist's album would you like to review?</h3>
+
+<%= form_tag("/search/2", method: "get") do %>
+  <%= label_tag(:artist_name, "Search for:") %>
+  <%= text_field_tag(:artist_name) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= flash[:error] if flash[:error] %>
